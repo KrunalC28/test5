@@ -19,5 +19,4 @@ export class DataService {
         return this.http.get(this.url+username)
             .map((response:Response) => response.json());
     }
-
 }
