@@ -5,7 +5,7 @@
     </header>    
     <br/>
     <div class="welcome">
-        <h4> Welcome </h4>
+        <h4> Welcome {{firstname}}</h4>
         <a (click) = "logout()" href="">Logout</a>
     </div>
     <hr/>
@@ -20,7 +20,7 @@
         </div>
         <div id="filterPanel" class="panel-collapse panel-collapse collapse">
             <div class="panel-body">
-                <new-user></new-user>
+                <my-signup></my-signup>
                 <user-details></user-details>                            
            </div>
         </div>

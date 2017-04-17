@@ -14,6 +14,8 @@ import { LoginService }  from'./login.service';
 export class LoginComponent{
 
   user:User = {username:'',firstname:'',lastname:'',password:'',role:''};
+  username:string='';
+  errormsg:string=''
 
   constructor(private loginService : LoginService,
               private router : Router){}
@@ -24,6 +26,8 @@ export class LoginComponent{
         console.log(data);
         if(data!=null)
           { 
+             this.username = data.firstname;
+             localStorage.setItem("username",this.username);
              if(data.role == 'admin') 
                this.router.navigate(['/admin']);
              
@@ -34,10 +38,11 @@ export class LoginComponent{
                this.router.navigate(['/trainee']);
           }
         else{
+            this.errormsg = "Username or Password does not match";
             this.router.navigate(['/login']);
         }
       },
-      (err) => console.log("error")
+      (err) => this.errormsg = "Username or Password does not match"
     );
   }
 

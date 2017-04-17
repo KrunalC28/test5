@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
+import { ReactiveFormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent }   from './app.component';
@@ -14,14 +15,16 @@ import { TableComponent }    from './admin/table.component';
 import { TrainerComponent }  from './trainer/trainer.component';
 import { TraineeComponent }  from './trainee/trainee.component';
 import { FilterTextComponent } from './shared/filter/filter-text.component';
- 
+import {DataTableModule} from "angular2-datatable";
+
 import { DataService }    from './shared/data.service';
 import { CanActivateAuthGuard } from './can-activate.service';
 import { AdminService }   from './admin/admin.service';
 import { FilterTextService }     from './shared/filter/filter-text.service';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, FormsModule, AppRoutingModule ],
+  imports:      [ BrowserModule, HttpModule, FormsModule, 
+                  AppRoutingModule,ReactiveFormsModule, DataTableModule ],
   declarations: [ AppComponent,
                   UserComponent,
                   LoginComponent,
