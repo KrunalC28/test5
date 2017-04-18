@@ -11,16 +11,19 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent }  from './admin/admin.component';
 import { NewUserComponent } from './admin/newUser.component';
 import { UserDetailsComponent } from './admin/userdetails.component';
-import { TableComponent }    from './admin/table.component';
 import { TrainerComponent }  from './trainer/trainer.component';
+import { MyTrainingComponent } from './trainer/mytraining.component';
 import { TraineeComponent }  from './trainee/trainee.component';
 import { FilterTextComponent } from './shared/filter/filter-text.component';
-import {DataTableModule} from "angular2-datatable";
+import { NewTrainingComponent } from './admin/newTraining.component';
+import { TrainingDetailsComponent } from './admin/trainingDetail.component';
+import { DataTableModule} from "angular2-datatable";
 
 import { DataService }    from './shared/data.service';
 import { CanActivateAuthGuard } from './can-activate.service';
 import { AdminService }   from './admin/admin.service';
 import { FilterTextService }     from './shared/filter/filter-text.service';
+import { TrainerService } from './trainer/trainer.service';      
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule, 
@@ -31,11 +34,17 @@ import { FilterTextService }     from './shared/filter/filter-text.service';
                   AdminComponent,
                   NewUserComponent,
                   UserDetailsComponent,
-                  TableComponent,
+                  NewTrainingComponent,
+                  TrainingDetailsComponent,
                   TrainerComponent,
+                  MyTrainingComponent,
                   TraineeComponent,
                   FilterTextComponent ],
-  providers:    [ DataService, CanActivateAuthGuard, AdminService, FilterTextService ],
+  providers:    [ DataService, 
+                  CanActivateAuthGuard, 
+                  AdminService, 
+                  FilterTextService,
+                  TrainerService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { User } from '../shared/user';
+import { Training } from '../shared/training';
 
 @Injectable()
 export class AdminService {
@@ -25,9 +26,20 @@ export class AdminService {
             .map((response:Response) => response.json());
     }
 
+    getAllTrainings(){
+        return this.http.get(this.url+'trainings')
+            .map((response:Response) => response.json());
+    }
+
     search(searchText:string){
         console.log('search string '+searchText);
         return this.http.get(this.url+'users/'+searchText)
+            .map((response:Response) => response.json());
+    }
+
+    searchTraining(searchText:string){
+        console.log('search string '+searchText);
+        return this.http.get(this.url+'trainings/'+searchText)
             .map((response:Response) => response.json());
     }
 
@@ -44,6 +56,14 @@ export class AdminService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         return this.http.post(this.url+'updateStatus',status)
+            .map((response:Response) => response.json());
+    }
+
+    addTraining(training:Training){
+        let body = JSON.stringify(training);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(this.url+'addTraining',training)
             .map((response:Response) => response.json());
     }
 }

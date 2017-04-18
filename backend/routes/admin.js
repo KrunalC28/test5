@@ -80,5 +80,41 @@ router.post('/updateStatus', function (req, res, next) {
   });
 })
 
+router.post('/addTraining', function (req, res, next) {
+  admin.addTraining(req.body, function (err, rows) {
+    console.log('In Function');
+    if (err) {
+      console.log(err);
+      res.json(err);
+    }
+    else {
+      console.log(rows[0]);
+      res.json(rows);
+    }
+  });
+})
+
+router.get('/trainings', function (req, res, next) {
+  admin.gettrainings(function (err, rows) {
+    if (err) {
+      res.json(err);
+    }
+    else {
+      res.json(rows);
+    }
+  });
+})
+
+router.get('/trainings/:search', function (req, res, next) {
+
+  admin.getsearchtrainings(req.params.search, function (err, rows) {
+    if (err) {
+      res.json(err);
+    }
+    else {
+      res.json(rows);
+    }
+  });
+})
 
 module.exports = router;

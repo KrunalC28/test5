@@ -15,7 +15,8 @@ export class LoginComponent{
 
   user:User = {username:'',firstname:'',lastname:'',password:'',role:''};
   username:string='';
-  errormsg:string=''
+  firstname:string='';
+  errormsg:string='';
 
   constructor(private loginService : LoginService,
               private router : Router){}
@@ -26,8 +27,10 @@ export class LoginComponent{
         console.log(data);
         if(data!=null)
           { 
-             this.username = data.firstname;
+             this.username = data.username;
+             this.firstname = data.firstname;
              localStorage.setItem("username",this.username);
+             localStorage.setItem("firstname",this.firstname);
              if(data.role == 'admin') 
                this.router.navigate(['/admin']);
              

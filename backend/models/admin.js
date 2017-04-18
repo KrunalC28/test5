@@ -3,12 +3,23 @@ var db = require('../dbconnection');
 var admin = {
     
     adduser:function(user, callback){
-        return db.query("insert into user values (?,?,?,?,?,?,?)",
-        [user.username,user.firstname,user.lastname,user.password,user.role,user.creationDate,'active'], callback);
+        return db.query("insert into user values (?,?,?,?,?,?)",
+        [user.username,user.firstname,user.lastname,user.password,user.role,'active'], callback);
     },
+
+    addTraining:function(training, callback){
+        return db.query("insert into training (title,taudience,trainer,starttime,endtime,location,isStart,isComplete)values (?,?,?,?,?,?,?,?)",
+        [training.title,training.taudience,training.trainer,
+        training.starttime,training.endtime,training.location,'No','No'], callback);
+    },
+
 
     getusers:function(callback){
         return db.query("select * from user", callback);
+    },
+
+    gettrainings:function(callback){
+        return db.query("select * from training", callback);
     },
     
     getsearchusers:function(searchText,callback){
@@ -16,14 +27,19 @@ var admin = {
         return db.query("select * from user where username like ?",'%' + searchText + '%', callback);
     },
 
+    getsearchtrainings:function(searchText,callback){
+       // console.log('Text :'+searchText);
+        return db.query("select * from training where title like ?",'%' + searchText + '%', callback);
+    },
+
     updateRole:function(body,callback){
        // console.log('Text :'+searchText);
-        return db.query("update user set role=? where id=?",[body.role,body.id], callback);
+        return db.query("update user set role=? where username=?",[body.role,body.id], callback);
     },
 
     updateStatus:function(body,callback){
        // console.log('Text :'+searchText);
-        return db.query("update user set isActive=? where id=?",[body.status,body.id], callback);
+        return db.query("update user set isActive=? where username=?",[body.status,body.id], callback);
     },
 };
 

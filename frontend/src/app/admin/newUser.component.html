@@ -138,12 +138,17 @@
                         <label for="roleId">Role</label>
 
                         <div>
-                            <input class="form-control" 
-                                id="roleId" 
-                                type="text" 
-                                placeholder="Role (required)" 
+                            <select class="form-control" 
+                                id="roleId"   
                                 required
-                                formControlName="role" />
+                                name="role"
+                                formControlName="role"
+                                >
+                                <option selected disabled>Select a role</option>
+                                <option value='admin'> Admin </option>
+                                <option value='trainer'> Trainer </option>
+                                <option value='trainee'> Trainee </option>
+                            </select>
                             <span class="help-block" 
                                     *ngIf="(userForm.get('role').touched 
                                             || userForm.get('role').dirty) 

@@ -4,20 +4,21 @@ import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector:'test',
-  template: `<div class="container">
-               <div class="content">
-                  <span> Welcome Trainer </span>
-                  <br>
-                  <a (click) = "logout()" href="">Logout</a>
-              </div>
-            </div> 
-  `
+  templateUrl:'./trainer.component.html',
+  styleUrls:['./trainer.component.css'] 
 })
 
 export class TrainerComponent{
 
-  constructor(){}
+  firstname:string;
+  constructor(private router:Router){}
 
   logout(){
+    this.router.navigate(['/login']);
   }
+
+  ngOnInit(){
+    this.firstname = localStorage.getItem("firstname");
+  }
+
 }

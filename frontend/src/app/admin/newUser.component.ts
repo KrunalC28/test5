@@ -11,7 +11,7 @@ import { AdminService } from './admin.service';
 })
 export class NewUserComponent implements OnInit {
   userForm: FormGroup;
-  user: User = {username: '', firstname: '', lastname: '', password: '', role: '', creationDate: new Date(), isActive: '' };
+  user: User = {username: '', firstname: '', lastname: '', password: '', role: '', isActive: '' };
 
   constructor(private fb: FormBuilder, private adminService: AdminService) { }
 

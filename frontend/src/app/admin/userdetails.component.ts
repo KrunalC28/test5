@@ -33,7 +33,7 @@ export class UserDetailsComponent implements OnInit {
     );
   }
 
-  update(role:string,id:number) {
+  update(role:string,id:string) {
     let updateRole={
       'role':role,
       'id':id
@@ -46,7 +46,7 @@ export class UserDetailsComponent implements OnInit {
 
   }
 
-  updateStatus(status:string,id:number){
+  updateStatus(status:string,id:string){
     console.log('clicked');
 
     let updateStatus={

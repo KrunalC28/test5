@@ -20,6 +20,6 @@ export class AdminComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.firstname = localStorage.getItem("username");
+    this.firstname = localStorage.getItem("firstname");
   }
 }
