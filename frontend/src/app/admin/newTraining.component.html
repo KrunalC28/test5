@@ -39,6 +39,32 @@
                     </div>
                     
                     <div class="form-group"
+                        [ngClass]="{'has-error': (trainingForm.get('department').touched 
+                                    || trainingForm.get('department').dirty) 
+                                    && !trainingForm.get('department').valid }">
+                        <label for="departmentId">Department</label>
+
+                        <div>
+                            <select class="form-control" 
+                                id="departmentId" 
+                                formControlName="department">
+                                <option value="" disabled selected hidden> Select Department </option>
+                                <option value="Engineering"> Enginerring</option>
+                                <option value="Support"> Support </option>
+                                <option value="Testing"> Testing </option>
+                            </select>
+                            <span class="help-block" 
+                                    *ngIf="(trainingForm.get('department').touched 
+                                            || trainingForm.get('department').dirty) 
+                                            && trainingForm.get('department').errors">
+                                <span *ngIf="trainingForm.get('department').errors.required">
+                                    Please Select Department
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group"
                         [ngClass]="{'has-error': (trainingForm.get('taudience').touched 
                                     || trainingForm.get('taudience').dirty) 
                                     && !trainingForm.get('taudience').valid }">
@@ -51,9 +77,9 @@
                                 required
                                 formControlName="taudience">
                                 <option value="" disabled selected hidden> Select Audience </option>
-                                <option value="all"> All </option>
-                                <option value="resourcpool"> Resourcepool </option>
-                                <option value="project"> Project Specific </option>
+                                <option value="All"> All </option>
+                                <option value="Resourc Pool"> Resourcepool </option>
+                                <option value="Project"> Project Specific </option>
                             </select>
                             <span class="help-block" 
                                     *ngIf="(trainingForm.get('taudience').touched 
@@ -93,6 +119,30 @@
                     </div>
 
                     <div class="form-group"
+                        [ngClass]="{'has-error': (trainingForm.get('date').touched 
+                                    || trainingForm.get('date').dirty) 
+                                    && !trainingForm.get('date').valid }">
+                        <label for="dateId">Date</label>
+
+                        <div>
+                            <input class="form-control" 
+                                id="dateId" 
+                                type="date" 
+                                placeholder="Date (required)" 
+                                required
+                                formControlName="date" />
+                            <span class="help-block" 
+                                    *ngIf="(trainingForm.get('date').touched 
+                                            || trainingForm.get('date').dirty) 
+                                            && trainingForm.get('date').errors">
+                                <span *ngIf="trainingForm.get('date').errors.required">
+                                    Please Enter Date.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group"
                         [ngClass]="{'has-error': (trainingForm.get('starttime').touched 
                                     || trainingForm.get('starttime').dirty) 
                                     && !trainingForm.get('starttime').valid }">
@@ -101,7 +151,7 @@
                         <div>
                             <input class="form-control" 
                                 id="starttimeId" 
-                                type="datetime-local" 
+                                type="time" 
                                 placeholder="Start Time (required)" 
                                 required
                                 formControlName="starttime" />
@@ -125,7 +175,7 @@
                         <div>
                             <input class="form-control" 
                                 id="endtimeId" 
-                                type="datetime-local" 
+                                type="time" 
                                 placeholder="End Time (required)" 
                                 required
                                 formControlName="endtime" />
@@ -153,9 +203,9 @@
                                 name="trainingRoom"
                                 formControlName="location">
                                 <option value="" disabled selected hidden> Select Location </option>
-                                <option value="tr1"> Training Room 1</option>
-                                <option value="tr2"> Training Room 2 </option>
-                                <option value="tr3"> Training Room 3 </option>
+                                <option value="TR1"> Training Room 1</option>
+                                <option value="TR2"> Training Room 2 </option>
+                                <option value="TR3"> Training Room 3 </option>
                             </select>
                             <span class="help-block" 
                                     *ngIf="(trainingForm.get('location').touched 

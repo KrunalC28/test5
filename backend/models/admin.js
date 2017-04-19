@@ -8,9 +8,9 @@ var admin = {
     },
 
     addTraining:function(training, callback){
-        return db.query("insert into training (title,taudience,trainer,starttime,endtime,location,isStart,isComplete)values (?,?,?,?,?,?,?,?)",
+        return db.query("insert into training (title,taudience,trainer,starttime,endtime,location,isStart,isComplete,department,date)values (?,?,?,?,?,?,?,?,?,?)",
         [training.title,training.taudience,training.trainer,
-        training.starttime,training.endtime,training.location,'No','No'], callback);
+        training.starttime,training.endtime,training.location,'No','No',training.department,training.date], callback);
     },
 
 

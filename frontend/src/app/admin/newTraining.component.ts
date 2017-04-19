@@ -14,15 +14,17 @@ import { AdminService } from './admin.service';
 export class NewTrainingComponent implements OnInit {
 
   trainingForm: FormGroup;
-  training: Training = { id: 0, title: '', taudience: '', trainer: '', starttime: '', endtime: '', location: '', isStart: '', isComplete: '' };
+  training: Training = { id: 0, title: '',department:'', taudience: '', trainer: '', date:'',starttime: '', endtime: '', location: '', isStart: '', isComplete: '' };
 
   constructor(private fb: FormBuilder, private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.trainingForm = this.fb.group({
       title: ['', Validators.required],
+      department: ['', Validators.required],
       taudience: ['', Validators.required],
       trainer: ['', Validators.required],
+      date: ['', Validators.required],
       starttime: ['', Validators.required],
       endtime: ['', Validators.required],
       location: ['', Validators.required]

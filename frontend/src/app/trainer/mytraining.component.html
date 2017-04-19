@@ -21,25 +21,24 @@
             <th>
                 <mfDefaultSorter by="location">Location</mfDefaultSorter>
             </th>
-            <th>
-                <mfDefaultSorter by="Scenarios">Scenarios</mfDefaultSorter>
-            </th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let training of mf.data">
-            <td #uid>{{training.title}}</td>
+            <td #uid><a routerLink="detail/{{training.id}}">{{training.title}}</a></td>
             <td>{{training.taudience}}</td>
             <td>{{training.trainer}}</td>
             <td>{{training.starttime}}</td>
             <td>{{training.endtime}}</td>
             <td>{{training.location}}</td>
-            <td></td>
+            <!--
+            <td><inline-edit name="scenarios" [(ngModel)]="editableText" (onSave)="saveEditable(value)"></inline-edit></td>
+            -->
         </tr>
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="7">
+            <td colspan="6">
                 <mfBootstrapPaginator [rowsOnPageSet]="[5,5,5]"></mfBootstrapPaginator>
             </td>
         </tr>

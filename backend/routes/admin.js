@@ -63,15 +63,19 @@ router.post('/updateRole', function (req, res, next) {
 router.post('/updateStatus', function (req, res, next) {
   admin.updateStatus(req.body, function (err, rows) {
     if (err) {
+      console.log('Error in Status Update');
       res.json(err);
     }
     else {
+      console.log('Else part in Status Update');
       router.get('/users', function (req, res, next) {
         admin.getusers(function (err, rows) {
           if (err) {
+            console.log('Error in fetching data after Status Update');
             res.json(err);
           }
           else {
+            console.log('Successfull Return after Status update');
             res.json(rows);
           }
         });
@@ -81,6 +85,7 @@ router.post('/updateStatus', function (req, res, next) {
 })
 
 router.post('/addTraining', function (req, res, next) {
+  console.log(req.body);
   admin.addTraining(req.body, function (err, rows) {
     console.log('In Function');
     if (err) {

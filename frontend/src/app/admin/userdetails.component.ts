@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { TableComponent } from './table.component';
 import { User } from '../shared/user';
 import { AdminService } from './admin.service';
 
@@ -13,7 +12,10 @@ import { AdminService } from './admin.service';
 export class UserDetailsComponent implements OnInit {
   users: User[];
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService) { 
+    
+   }
+  
   ngOnInit(): void {
     this.getAllUsers();
   }
@@ -41,14 +43,14 @@ export class UserDetailsComponent implements OnInit {
 
     this.adminService.updateRole(updateRole).subscribe(
       (data) => { this.users = data },
-      (err) => console.log(err)
+      (err) => console.log(err),
+      () => this.getAllUsers()
     );
 
   }
 
   updateStatus(status:string,id:string){
-    console.log('clicked');
-
+    
     let updateStatus={
       'status':status,
       'id':id
@@ -56,10 +58,15 @@ export class UserDetailsComponent implements OnInit {
     
     if(status==='active')
       updateStatus.status='inactive';
+    else 
+      updateStatus.status='active';
 
     this.adminService.updateStatus(updateStatus).subscribe(
-      (data) => { this.users = data },
-      (err) => console.log(err)
+      
+      (data) => { console.log(data);
+                  this.users = data },
+      (err) => console.log(err),
+      () => this.getAllUsers()
     );
   }
 
